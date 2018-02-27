@@ -133,3 +133,56 @@ var 变量名 []type
 ## 接口
 
 **多态** 同一个类型在不同的实例上表现出不同的行为
+
+Go 语言规范定义了接口方法集的调用规则：
+
+> * 类型 *T 的可调用方法集包含接受者为 *T 或 T 的所有方法集
+> * 类型 T 的可调用方法集包含接受者为 T 的所有方法
+> * 类型 T 的可调用方法集不包含接受者为 *T 的方法
+
+### 类型断言
+第一种方式：
+
+    if _, ok := varI.(T); ok {
+        // ...
+    }
+第二种方式：
+
+    switch t := areaIntf.(type) {
+    case *Square:
+        fmt.Printf("Type Square %T with value %v\n", t, t)
+    case *Circle:
+        fmt.Printf("Type Circle %T with value %v\n", t, t)
+    case nil:
+        fmt.Printf("nil value: nothing to check?\n")
+    default:
+        fmt.Printf("Unexpected type %T\n", t)
+    }
+### 是否实现了接口
+    type Stringer interface {
+            String() string
+        }
+
+        if sv, ok := v.(Stringer); ok {
+            fmt.Printf("v implements String(): %s\n", sv.String()) // note: sv, not v
+        }
+## 空接口类型
+
+## 反射
+    变量的值和类型
+    field   method
+
+    type Haha struct {}
+    h := new(Haha)
+    reflect.ValueOf(h).Type()  // Haha
+    reflect.ValueOf(h).Kind()  //struct
+
+## go中的面向对象概念
+### 封装
+> * 包范围内的：首字母小写，只在所在包内可见
+> * 可到处的：首字母大写，所在包以外也可见
+### 继承
+
+结构体可内嵌一个多个想包含的行为的类型
+### 多态
+用接口实现，类型和接口松耦合
