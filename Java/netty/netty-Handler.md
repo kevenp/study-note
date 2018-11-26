@@ -1,0 +1,1 @@
+channelRead0    表示decoder之后数据类型，可直接使用，如果类型没有和SimpleChannelInboundHandler的泛型类型一致，将不会运行
