@@ -1,0 +1,2 @@
+#### innodb_flush_log_at_trx_commit
+#### sync_binlog
